@@ -1,6 +1,5 @@
 Stopped at:
-https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/Django/Home_page
-
+https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/Django/Generic_views
 
     deactivate — Exit out of the current Python virtual environment
     workon — List available virtual environments
