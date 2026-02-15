@@ -16,11 +16,19 @@ def index(request):
     # The 'all()' is implied by default.
     num_authors = Author.objects.count()
 
+    # Number of genres
+    num_genres = Genre.objects.count()
+
+    # Number of books with and in the title
+    num_book_and =  Book.objects.filter(title__icontains='and').count()
+
     context = {
         'num_books': num_books,
         'num_instances': num_instances,
         'num_instances_available': num_instances_available,
         'num_authors': num_authors,
+        'num_genres': num_genres,
+        'num_book_and':num_book_and,
     }
 
     # Render the HTML template index.html with the data in the context variable
