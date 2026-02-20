@@ -1,5 +1,6 @@
 Stopped at:
 https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/Django/Generic_views
+For the book-detail path the URL pattern uses a special syntax to capture the specific id of the book that we want to see.
 
     deactivate — Exit out of the current Python virtual environment
     workon — List available virtual environments
