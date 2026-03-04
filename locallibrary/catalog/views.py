@@ -42,3 +42,11 @@ class BookListView(generic.ListView):
 
 class BookDetailView(generic.DetailView):
     model = Book
+
+class AuthorListView(generic.ListView):
+    model = Author
+    paginate_by = 10
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
+    # authors_books = Book.objects.filter(first_name__icontains=model.first_name).filter(last_name__icontains=model.last_name)
