@@ -49,4 +49,3 @@ class AuthorListView(generic.ListView):
 
 class AuthorDetailView(generic.DetailView):
     model = Author
-    # authors_books = Book.objects.filter(first_name__icontains=model.first_name).filter(last_name__icontains=model.last_name)
