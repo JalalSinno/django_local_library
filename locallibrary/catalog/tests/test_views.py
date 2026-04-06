@@ -231,3 +231,34 @@ def test_form_invalid_renewal_date_future(self):
     response = self.client.post(reverse('renew-book-librarian', kwargs={'pk': self.test_bookinstance1.pk}), {'renewal_date': invalid_date_in_future})
     self.assertEqual(response.status_code, 200)
     self.assertFormError(response.context['form'], 'renewal_date', 'Invalid date - renewal more than 4 weeks ahead')
+
+
+from django.contrib.contenttypes.models import ContentType
+class AuthorCreateViewTest(TestCase):
+    """Test case for the AuthorCreate view (Created as Challenge)."""
+
+    def setUp(self):
+        # Create a user
+        test_user1 = User.objects.create_user(
+            username='test_user', password='some_password')
+        test_user2 = User.objects.create_user(
+            username='test_user2', password='some_password2')
+
+        content_typeAuthor = ContentType.objects.get_for_model(Author)
+        permAddAuthor = Permission.objects.get(
+            codename="add_author",
+            content_type=content_typeAuthor,
+        )
+
+        test_user1.user_permissions.add(permAddAuthor)
+        test_user1.save()
+
+        test_user2.save()
+
+    def test_create_author_link_not_displayed(self):
+         pass
+    
+    def test_author_create_view(self): #User with incorrect permissions attempts to create author
+        login = self.client.login(username='test_user2', password='some_password2')
+        response = self.client.get(reverse('author-create'))
+        self.assertEqual(response.status_code, 403)
